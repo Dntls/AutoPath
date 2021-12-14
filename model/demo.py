@@ -1,4 +1,7 @@
 import operator
+
+from pip._vendor.distlib.compat import raw_input
+
 from config import *
 from Environment import *
 from AutoPath import *
@@ -12,7 +15,7 @@ def rank(user_choices, sid):
 	for choice in user_choices:
 		try:
 			correct = 0 <= int(choice) and int(choice) < len(sid)
-		except ValueError, IndexError:
+		except ValueError as IndexError:
 			raw_input('Invalid input. Example input: 0 or 0 1 2 (separated by space). Please press enter to continue.')
 			return
 		if not correct:
