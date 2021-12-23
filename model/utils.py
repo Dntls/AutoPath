@@ -8,13 +8,19 @@ from collections import defaultdict
 def load_node(path):
 	name_to_id, id_to_name = {}, []
 	type_to_node, node_to_type = defaultdict(list), []
+	# type_to_node, node_to_type = {}, []
 	node_id, type_id = 0, 0
 	with open(path) as f:
 		for line in f:
 			line = line.rstrip().split('\t')
 			name_to_id[line[0]] = node_id
 			id_to_name.append(line[0])
-			type_to_node[line[1]].append(node_id)
+
+			try:
+				type_to_node[line[1]].append(node_id)
+			except IndexError:
+				print "error"
+
 			node_to_type.append(line[1])
 			node_id += 1
 	type_to_node_copy = {}

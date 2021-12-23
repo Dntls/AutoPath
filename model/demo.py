@@ -35,6 +35,7 @@ def rank(user_choices, sid):
 		print('----------------')
 	raw_input('Above are the results. Please press enter to continue.')
 
+1
 
 def interactive():
 	movies = environment.test_data
